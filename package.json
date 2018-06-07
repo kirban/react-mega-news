@@ -6,12 +6,12 @@
   "scripts": {
     "test": "Error testing: Nocommand initialised",
     "client": "cd client && npm start",
-    "server": "nodemon server.js",
+    "server": "nodemon server/Server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kirban"
+    "url": "https://github.com/kirban/react-mega-news"
   },
   "keywords": [
     "react",
