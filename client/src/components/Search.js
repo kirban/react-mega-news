@@ -1,6 +1,8 @@
 //search form
-const cSearchForm = () => {
-    return <div>
-        SearchForm
-    </div>
-};
+import React, { Component } from 'react';
+
+class CNewsSearch extends Component {
+    
+}
+
+export default CNewsSearch;

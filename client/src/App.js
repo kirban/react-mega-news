@@ -1,80 +1,51 @@
 import React, { Component } from 'react';
 
+import CNewsList from './components/NewsList'
 // import logo from './logo.svg';
+
+import CNewsSearch from './components/Search'
 
 import './App.css';
 
-let NEWS = [
-  {
-    id: 1,
-    title: 'First title',
-    desc: 'First description',
-    author: 'Vasiliy Petrov',
-    pubdate: '20.01.2017',
-    url: '#',
-    imageurl: '#',
-    category: 'politics',
-    country: 'UK',
-    source: 'BBC'
-  },
-  {
-    id: 2,
-    title: 'Second title',
-    desc: 'Second description',
-    author: 'Nikolay Ivanov',
-    pubdate: '6.03.2018',
-    url: '#',
-    imageurl: '#',
-    category: 'jazz',
-    country: 'France',
-    source: 'CNN'
-  },
-  {
-    id: 3,
-    title: 'Third title',
-    desc: 'Third description',
-    author: 'Anatoliy Molchanov',
-    pubdate: '16.04.2018',
-    url: '#',
-    imageurl: '#',
-    category: 'sports',
-    country: 'USA',
-    source: 'HBS'
-  }
-]
+let REFS = [];
 
-class News extends Component{
-  render(){
-    return (
-    <li>
-      <img src={this.props.imageurl}/>
-      <div>{this.props.title}</div>
-      <div>{this.props.desc}</div>
-    </li>
-      );
-  }
-}
+class App extends Component { 
+  
+  handleSearch(event){
+    let searchQuery = event.target.value.toLowerCase();
+    let displayedNews = this.state.displayedNews.filter(function(el){
+      let searchValue = el.title.toLowerCase();
+      return searchValue.indexOf(searchQuery) !== -1;
+    })
+    
+    this.setState({
+      displayedNews: displayedNews
+    });
 
-class App extends Component {
+  }
 
   render() {
     return (
-      <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-        </p>
-        <p></p> */}        
+      <div className="App">   
+        <div>Refinements:</div>
         <ul>
-          {NEWS.map(function(el){
+          <li>
+            <input className="search__field" type="text" onChange={this.handleSearch} placeholder="Type search phrase here:" />
+          </li>
+          {
+            this.state.displayedNews.map(function(el){
             return (
-            <News 
+            <CNewsList 
               key={el.id} 
               title={el.title}
               desc={el.desc}
               image={el.imageurl}
+              author={el.author}
+              pubdate={el.pubdate}
+              url={el.url}
+              category={el.category}
+              country={el.country}
+              source={el.source}
             />
             );
           })}
