@@ -1,6 +1,5 @@
-// Component that returns object of news
-const cGetNews = () => {
-    return <div>
-        GetNews
-    </div>
-};
+import React, { Component } from 'react';
+
+export default class CGetNews extends Component {
+    
+}
