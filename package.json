@@ -6,7 +6,7 @@
   "scripts": {
     "test": "Error testing: Nocommand initialised",
     "client": "cd client && npm start",
-    "server": "nodemon server/Server.js",
+    "server": "node server/Server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "repository": {
