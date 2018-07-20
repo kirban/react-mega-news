@@ -20,17 +20,17 @@ class CNewsList extends Component {
       {this.state.displayedNews.map(n=>{
           return (
             <li className="news__item" key={n.id}>
-              <img className="news__image" src={n.imageurl} width="100px" height="100px" />
+              <img className="news__image" src={n.urlToImage} width="100px" height="100px" />
               <div className="news__pre">
                 <span>Category: {n.category}</span>
                 <span>Country: {n.country}</span>
               </div>
               
               <h3 className="news__title">{n.title}</h3>
-              <div className="news__desc">{n.desc}</div>
+              <div className="news__desc">{n.description}</div>
               <div className="news__info">
                 <span className="news__author">Author:{n.author}</span>
-                <span className="news__pubdate">{n.pubdate}</span>
+                <span className="news__pubdate">{n.publishedAt}</span>
               </div>
               <div className="news__details">
                 <a className="news__details-link" href={n.url}>more info...</a>
