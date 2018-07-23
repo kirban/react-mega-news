@@ -2,7 +2,7 @@
 // import CGetNews from '../components/GetNews';
 import updateNews from '../Actions';
 
-// let NEWS = getArticles;
+
 // let NEWS = [
 //     {
 //       id: 1,
@@ -41,16 +41,19 @@ import updateNews from '../Actions';
 //       source: 'HBS'
 //     }
 //   ]
-  
+
 const reducer = (state = [], action) => {
     console.log(action);
     if (action.type === 'REFRESH_NEWS'){
       //...render NEWS on the page
-      updateNews('us','bbc-news');
+      updateNews('ru','reuters');
       // return <CGetNews />; //here we will update news list according to info on the server
     }
     if (action.type === 'SEARCH_NEWS'){
       // return action.dNews;
+    }
+    if (action.type === 'RENDER_NEWS'){
+      state = action.payload;
     }
     return state;
   }

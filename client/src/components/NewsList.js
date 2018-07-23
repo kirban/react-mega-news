@@ -11,13 +11,14 @@ class CNewsList extends Component {
   render() {
     return (
       <ul className="news__list">
+      {console.debug(this.state.displayedNews)}
       <li>
         <input className="search__field" onChange={this.handleSearch.bind(this)} placeholder="Type search phrase here:" />
       </li>
       <li>
         <button onClick={() => this.props.dispatch({ type: 'REFRESH_NEWS' })}>Refresh news</button>
       </li>
-      {this.state.displayedNews.map(n=>{
+      {this.props.news.map(n=>{
           return (
             <li className="news__item" key={n.id}>
               <img className="news__image" src={n.urlToImage} width="100px" height="100px" />

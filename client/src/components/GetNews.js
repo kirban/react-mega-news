@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import updateNews from '../Actions';
+import { store } from '../index';
+
 //import CNewsList from './NewsList';
 
 export default class CGetNews extends Component {
@@ -10,7 +11,9 @@ export default class CGetNews extends Component {
     }
 
     render(){
-        // updateNews();
+        store.subscribe(()=>{
+            console.log("store changed", store.getState());
+        })
         return null;
     }
 }
