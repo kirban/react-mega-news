@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import updateNews from '../Actions';
-import CNewsList from './NewsList';
+//import CNewsList from './NewsList';
 
 export default class CGetNews extends Component {
 
@@ -10,8 +10,7 @@ export default class CGetNews extends Component {
     }
 
     render(){
-        updateNews();
-        //вызвать функцию из actions
+        // updateNews();
         return null;
     }
 }

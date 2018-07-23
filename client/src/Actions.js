@@ -1,15 +1,13 @@
-export default function updateNews (){
-    var url = 'https://newsapi.org/v2/top-headlines?' +
-          'country=us&' +
-          'apiKey=330aba15643547cfa7212c01fb7f664f';
+export default async function updateNews (country='us', sources='', apiKey='330aba15643547cfa7212c01fb7f664f'){
+    var url = `https://newsapi.org/v2/top-headlines?${ sources !== '' ? `sources=` + sources : `country=` + country }&apiKey=${ apiKey }`;
+    
         var req = new Request(url);
         fetch(req)
             .then(function(response) {
-                console.log(response.headers.get('Content-Type')); // application/json; charset=utf-8
-                console.log(response.status); // 200
-                return response.json();
+                return ((response.headers.get('Content-Type') === "application/json; charset=utf-8") && (response.status === 200)) ? response.json() : console.error('Connection to API Error!');
             })
             .then(function(res){
+                console.log(res.articles);
                 return res.articles;     //вот тут надо как-то передать в редьюсер массив новостей  
             })
 }
