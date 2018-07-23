@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-import CNewsList from './components/NewsList'
-
-import CNewsSearch from './components/Search';
+import CNewsList from './components/NewsList';
+import CHeader from './components/Header';
 import './App.css';
-import CGetNews from './components/GetNews';
 
 // let REFS = [];
 export default class App extends Component { 
@@ -12,8 +10,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <CGetNews />
-        <CNewsSearch />
+        <CHeader />
         <CNewsList />
       </div>
     );

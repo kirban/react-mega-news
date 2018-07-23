@@ -1,31 +1,16 @@
+//TODO: Rewrite NewsList Component in functional style
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class CNewsList extends Component {
 
-    constructor(props){
-        super(props);
-        this.state = { displayedNews: this.props.news};
-    }
-
   render() {
     return (
       <ul className="news__list">
-      {console.debug(this.state.displayedNews)}
-      <li>
-        <input className="search__field" onChange={this.handleSearch.bind(this)} placeholder="Type search phrase here:" />
-      </li>
-      <li>
-        <button onClick={() => this.props.dispatch({ type: 'REFRESH_NEWS' })}>Refresh news</button>
-      </li>
       {this.props.news.map(n=>{
           return (
             <li className="news__item" key={n.id}>
-              <img className="news__image" src={n.urlToImage} width="100px" height="100px" />
-              <div className="news__pre">
-                <span>Category: {n.category}</span>
-                <span>Country: {n.country}</span>
-              </div>
+              <img className="news__image" alt='newsapi' src={n.urlToImage} width="100px" height="100px" />
               
               <h3 className="news__title">{n.title}</h3>
               <div className="news__desc">{n.description}</div>
@@ -42,17 +27,6 @@ class CNewsList extends Component {
       }
       </ul>
     )
-  }
-
-  handleSearch = (event) => {
-    let searchQuery = event.target.value.toLowerCase();
-
-    let filteredList = this.props.news.filter(el => {
-      let searchValue = el.title.toLowerCase();
-      return searchValue.indexOf(searchQuery) !== -1;
-    })
-
-    this.setState({displayedNews: filteredList});
   }
 
 }

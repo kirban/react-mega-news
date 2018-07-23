@@ -9,8 +9,7 @@ export default function updateNews (country='us', sources='', apiKey='330aba1564
                 return ((response.headers.get('Content-Type') === "application/json; charset=utf-8") && (response.status === 200)) ? response.json() : console.error('Connection to API Error!');
             })
             .then(function(res){
-                //console.log(res.articles);
                 store.dispatch({type: 'RENDER_NEWS', payload: res.articles});
-                return res.articles;     //вот тут надо как-то передать массив новостей                  
+                return res.articles;                 
             })
 }
