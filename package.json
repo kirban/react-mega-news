@@ -26,6 +26,7 @@
     "mysql": "^2.15.0"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "concurrently": "^3.5.0"
   }
 }
