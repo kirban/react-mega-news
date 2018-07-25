@@ -10,6 +10,7 @@ class CNewsList extends Component {
       {this.props.news.map((n, i)=>{
           return (
             <li className="news__item" key={i}>
+              
               <img className="news__image" alt='newsapi' src={n.urlToImage} width="100px" height="100px" />
               
               <h3 className="news__title">{n.title}</h3>

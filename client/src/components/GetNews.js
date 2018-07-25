@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { store } from '../index';
 import { connect } from 'react-redux';
-//import CNewsList from './NewsList';
 
 export class CGetNews extends Component {
 
@@ -15,8 +14,8 @@ export class CGetNews extends Component {
             console.log("store changed", store.getState()); // здесь надо что-то сделать ...
         })
         return (
-            <button onClick={() => this.props.dispatch({ type: 'REFRESH_NEWS' })} className="refresh">
-                <i className="fas fa-sync"></i>
+            <button onClick={() => this.props.dispatch({ type: 'REFRESH_NEWS', payload: { currentPage: this.props.currentPage } })} className="refresh">
+                <i className="fas fa-sync"></i>                
             </button>
         );
     }

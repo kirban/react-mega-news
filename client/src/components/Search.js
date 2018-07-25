@@ -1,7 +1,6 @@
 //search form
 import React, { Component } from 'react';
 import {Navbar, FormGroup, FormControl, Button} from 'react-bootstrap';
-import { store } from '../index';
 import { connect } from 'react-redux';
 export class CNewsSearch extends Component {
     render(){
@@ -9,11 +8,13 @@ export class CNewsSearch extends Component {
             <Navbar.Form pullRight>
                     <FormGroup>
                         <FormControl id="searchQuery" type="text" placeholder="Search" />
-                    </FormGroup>
-                    <Button onClick={()=>{
+                        <Button onClick={()=>{
                             let sq = document.getElementById('searchQuery').value;
-                            this.props.dispatch({type:'SEARCH_NEWS', payload:{ searchQuery: sq } })
+                            this.props.dispatch({type:'SEARCH_NEWS', payload:{ currentPage: 'everything', searchQuery: sq } });
+                            document.getElementById('searchQuery').value = "";
                         }} type="submit">Search</Button>
+                    </FormGroup>
+                    
             </Navbar.Form>
         )
     }

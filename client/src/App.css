@@ -20,3 +20,7 @@ li{
   background-color: #d0d5dd;
   margin-top: 7px;
 }
+
+.header__nav-item{
+  margin: 0;
+}

@@ -1,24 +1,23 @@
-import updateNews from '../Actions';
+import updateNews, { getSources } from '../Actions';
 
 const reducer = (state = [], action) => {
     console.log(action);
-    if (action.type === 'REFRESH_NEWS'){
-      
-      if(action.payload === undefined) {
-
-        updateNews('top-headlines', {country: 'us'});
-
-      }
-    }
-    if (action.type === 'SEARCH_NEWS'){
-
-      updateNews('top-headlines', { q: action.payload.searchQuery })
-
-    }
-    if (action.type === 'RENDER_NEWS'){
-
-      state = action.payload;
-
+    switch(action.type) {
+      case 'REFRESH_NEWS':
+        if(action.payload.currentPage === 'sources') {
+          getSources({});
+        } else {
+          updateNews(action.payload.currentPage, {country: 'us'});
+        }
+        break
+      case 'SEARCH_NEWS':
+        updateNews(action.payload.currentPage, { q: action.payload.searchQuery });
+        break
+      case 'RENDER_NEWS':
+        state = action.payload;
+        break
+      default: 
+        return state
     }
 
     return state;

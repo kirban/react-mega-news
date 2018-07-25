@@ -20,8 +20,21 @@ export default function updateNews (endPoint, params){
             if (response.status === 200) {
                 store.dispatch({type: 'RENDER_NEWS', payload: response.data.articles});
                 return response.data.articles;
+            } else{
+                throw new Error('Response to API status:', response.status);
             }
-            throw new Error('Response to API status:', response.status);
         })
 
+}
+
+export function getSources (params) {
+    axios.get(withQuery(mainUrl + 'sources', params))
+    .then(response => {
+        if (response.status === 200) {
+            store.dispatch({type: 'RENDER_NEWS', payload: response.data.sources});
+            return response.data.sources;
+        } else {
+            throw new Error('Response to API status:', response.status);
+        }
+    })
 }

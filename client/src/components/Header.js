@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
-import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import { Navbar,Nav,NavItem } from 'react-bootstrap';
 import CNewsSearch from '../components/Search';
-import  CGetNews from '../components/GetNews';
+import CGetNews from '../components/GetNews';
+import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 
 export default class CHeader extends Component {
     render(){
         return <Navbar fluid inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">React Mega News Project</a>
+              <Link to="/">React Mega News Project</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
-        </Navbar.Header>
-        
+        </Navbar.Header>        
         <Navbar.Collapse>
             <Nav>
-                <CGetNews />
+                <LinkContainer to="/">
+                    <NavItem className="header__nav-item">Top Headlines</NavItem>
+                </LinkContainer>
+
+                <LinkContainer to="/sources">
+                    <NavItem className="header__nav-item">Sources</NavItem>
+                </LinkContainer>             
+
+                <CGetNews currentPage={this.props.currentPage}/>    
             </Nav>
             <CNewsSearch />
         </Navbar.Collapse>
