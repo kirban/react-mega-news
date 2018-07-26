@@ -3,23 +3,40 @@
 // create database, create tables and rows
 // *****
 
-var mysql = require('mysql'); 
+const Sequelize = require('sequelize');
 
-let mysql = require('mysql');
 
-// Configuring database settings:
-let connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'nodeadmin',
-    password : 'sT16ui24st16ui24'
+module.exports = dbConfig = new Sequelize('reactmeganews', 'root', 'romanich95', {
+  host: 'localhost',
+  dialect: 'mysql',
+  operatorsAliases: false,
+
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
+});
+
+dbConfig
+  .authenticate()
+  .then(() => {
+    console.log('Connection to the database has been established successfully.');
+    const Source = require('./Models/SourcesModel');
+    const Country = require('./Models/CoutriesModel');
+    const Category = require('./Models/CategoriesModel');
+    const Language = require('./Models/LanguagesModel');
+    const News = require('./Models/NewsModel');
+    
+    Source;
+    Country;
+    Category;
+    Language;
+    News;
+
+    
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
   });
-
-  //connecting to mysql
-connection.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-    //checking that db not exists (else drop database) and create new
-    console.log(connection.query("SHOW DATABASES LIKE 'reactMegaNews'"));
-  });
-
-

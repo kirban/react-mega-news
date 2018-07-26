@@ -13,8 +13,8 @@ const withQuery = (url, params) => {
     return url;
   };
 
-export default function updateNews (endPoint, params){
-        
+export default function updateNews (endPoint, params){  // endPoint could be: 'top-headlines' - to render news on the main page
+                                                        // and 'everything' - to render news search results       
         axios.get(withQuery(mainUrl+endPoint, params))
         .then(response=>{
             if (response.status === 200) {
