@@ -38,3 +38,6 @@ export function getSources (params) {
         }
     })
 }
+
+export function refreshNews(){}
+export function searchNews(){}

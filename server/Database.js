@@ -4,38 +4,25 @@
 // *****
 
 const Sequelize = require('sequelize');
+const config = require('./Config/config');
 
 
-module.exports = dbConfig = new Sequelize('reactmeganews', 'root', 'romanich95', {
-  host: 'localhost',
-  dialect: 'mysql',
-  operatorsAliases: false,
-
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  }
+module.exports = dbConfig = new Sequelize(config.db_name, config.db_user, config.db_pass, {
+  host: config.host,
+  dialect: config.db_dialect,
+  operatorsAliases: config.operatorsAliases,
+  pool: config.db_pool
 });
 
 dbConfig
   .authenticate()
   .then(() => {
-    console.log('Connection to the database has been established successfully.');
-    const Source = require('./Models/SourcesModel');
-    const Country = require('./Models/CoutriesModel');
-    const Category = require('./Models/CategoriesModel');
-    const Language = require('./Models/LanguagesModel');
-    const News = require('./Models/NewsModel');
-    
-    Source;
-    Country;
-    Category;
-    Language;
-    News;
-
-    
+    require('./Models/SourcesModel');
+    require('./Models/CoutriesModel');
+    require('./Models/CategoriesModel');
+    require('./Models/LanguagesModel');
+    require('./Models/NewsModel');
+    console.log('Connection to the database has been established successfully.');    
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);

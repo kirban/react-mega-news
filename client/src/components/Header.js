@@ -26,7 +26,7 @@ export default class CHeader extends Component {
 
                 <CGetNews currentPage={this.props.currentPage}/>    
             </Nav>
-            <CNewsSearch />
+            <CNewsSearch currentPage={this.props.currentPage}/>
         </Navbar.Collapse>
       </Navbar>;
     }

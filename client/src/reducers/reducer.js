@@ -11,6 +11,7 @@ const reducer = (state = [], action) => {
         }
         break
       case 'SEARCH_NEWS':
+        if(action.payload.currentPage === 'sources') { return };  // TODO: Make a redirect to results of searching to component top-hedlines
         updateNews(action.payload.currentPage, { q: action.payload.searchQuery });
         break
       case 'RENDER_NEWS':

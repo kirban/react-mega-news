@@ -4,15 +4,14 @@ import CHeader from '../components/Header';
 import CSourcesList from '../components/SourcesList';
 
 class Sources extends Component {
+    state = { };
     static getDerivedStateFromProps(){
         return store.dispatch({ type: 'REFRESH_NEWS', payload: { currentPage: 'sources' } });
     }
-
     render() { 
-        return (
-            
+        return (            
             <div className="wrapper">
-                <CHeader currentPage="top-headlines"/>
+                <CHeader currentPage="sources"/>
                 <CSourcesList />
             </div>
         );

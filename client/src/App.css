@@ -2,17 +2,17 @@
   text-align: center;
 }
 
-body{
+body {
   width: 70%;
   margin: 0 auto;
 }
 
-li{
+li {
   list-style: none;
   margin-bottom: 2rem;
 }
 
-.refresh{
+.refresh {
   width: 30px;
   height: 30px;
   border-radius: 25%;
@@ -21,6 +21,14 @@ li{
   margin-top: 7px;
 }
 
-.header__nav-item{
+.header__nav-item {
   margin: 0;
+}
+
+.filters__form {
+  padding: 5rem;
+}
+
+.filters__form-group {
+  margin-right: 3rem;
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import CNewsList from '../components/NewsList';
 import CHeader from '../components/Header';
+import CFilters from '../components/Filters';
 import '../App.css';
 import { store } from '../index';
 
@@ -16,6 +17,7 @@ export default class App extends Component {
     return (
       <div className="wrapper">
         <CHeader currentPage="top-headlines"/>
+        <CFilters />
         <CNewsList />
       </div>
     );

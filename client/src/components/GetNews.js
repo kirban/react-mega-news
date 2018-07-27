@@ -11,7 +11,7 @@ export class CGetNews extends Component {
 
     render(){
         store.subscribe(()=>{
-            console.log("store changed", store.getState()); // здесь надо что-то сделать ...
+            console.log("store changed", store.getState()); // TODO:здесь надо что-то сделать ...
         })
         return (
             <button onClick={() => this.props.dispatch({ type: 'REFRESH_NEWS', payload: { currentPage: this.props.currentPage } })} className="refresh">

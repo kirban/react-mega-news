@@ -5,12 +5,13 @@ import App from './Routes/App';
 import Sources from './Routes/Sources';
 import registerServiceWorker from './registerServiceWorker';
 import reducer from './Reducers/Reducer';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux';
 import { Route, HashRouter } from 'react-router-dom';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-export const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() )
-// second argument in createstore is for debugging redux
+export const store = createStore(reducer, composeWithDevTools(applyMiddleware(ReduxThunk)) )
 
 
 ReactDOM.render(<Provider store={store}>

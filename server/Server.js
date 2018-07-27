@@ -16,15 +16,22 @@
 //-------------------------------------------------
 
 const express = require('express');
-
+const config = require('./Config/config');
+const dbConfig = require('./Database');
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || config.port;
 
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-  const db = require('./Database')
+app.post("/", (req,res)=>{
+  res.send({
+    message: `Hello ${req.body}!`
+  })
+})
 
-});
-
-app.listen(port, () => console.log(`Listening on port ${port}`));
-
+dbConfig.sync()
+  .then(() => {
+    app.listen(port);
+    console.log(`Server started on ${port}`);
+  })
+  .catch(err => {
+    console.error('Server error: ', err);
+  });
