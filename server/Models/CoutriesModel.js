@@ -1,12 +1,13 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('../Database');
 
-const Country = dbConfig.define('country', {
+
+module.exports =  Country = dbConfig.define('country', {
     name: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     }
   });
-  
+
   // force: true will drop the table if it already exists
   Country.sync({force: true}).then(() => {
     // Table created

@@ -1,12 +1,13 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('../Database');
 
-const Language = dbConfig.define('language', {
+module.exports =  Language = dbConfig.define('language', {
     name: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     }
   });
-  
+
+
   // force: true will drop the table if it already exists
   Language.sync({force: true}).then(() => {
     // Table created
@@ -25,3 +26,4 @@ const Language = dbConfig.define('language', {
     Language.create({ name: 'ud' });
     Language.create({ name: 'zh' });
   });
+

@@ -16,12 +16,14 @@ module.exports = dbConfig = new Sequelize(config.db_name, config.db_user, config
 
 dbConfig
   .authenticate()
-  .then(() => {
-    require('./Models/SourcesModel');
+  .then(() => {   
+    require('./Models/NewsModel');
     require('./Models/CoutriesModel');
     require('./Models/CategoriesModel');
     require('./Models/LanguagesModel');
-    require('./Models/NewsModel');
+    require('./Models/SourcesModel');
+    
+    
     console.log('Connection to the database has been established successfully.');    
   })
   .catch(err => {

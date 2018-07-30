@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('../Database');
 
-const News = dbConfig.define('news', {
+module.exports = News = dbConfig.define('news', {
     title: {
       type: Sequelize.STRING,
       unique: true
@@ -21,11 +21,13 @@ const News = dbConfig.define('news', {
     author: {
         type: Sequelize.STRING
     },
-    source: {
-        type: Sequelize.SMALLINT
+    source_id: {
+        type: Sequelize.SMALLINT,
     }
   });
   
-News.sync().then(()=>{
+
+News.sync({force: true}).then(()=>{
     console.log('News up to date');
 })
+
