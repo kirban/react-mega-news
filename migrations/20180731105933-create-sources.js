@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       language: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       country: {
         type: Sequelize.STRING
@@ -37,9 +37,21 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
+    .then(() => queryInterface.addConstraint('Sources', ['language'], {
+      type: 'foreign key',
+      name: 'fk_lang_source',
+      references: { //Required field
+        table: 'languages',
+        field: 'id'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+    }));
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Sources');
+    return (queryInterface.removeConstraint('sources', 'fk_lang_source')
+    .then(queryInterface.removeConstraint('sources', 'fk_source_news'))
+    .then(queryInterface.dropTable('sources')));
   }
 };

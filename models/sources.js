@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   Sources.associate = function(models) {
     // associations can be defined here
     Sources.hasMany(models.News);
+    Sources.belongsTo(model.languages);
   };
   return Sources;
 };

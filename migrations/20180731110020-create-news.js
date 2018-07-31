@@ -28,25 +28,25 @@ module.exports = {
       },
       sourceId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'Sources',
-          key: 'id'
-        },
+        // references: {
+        //   model: 'Sources',
+        //   key: 'id'
+        // },
       },
-      // category: {
-      //   type: Sequelize.STRING,
-      //   references: {
-      //     model: 'Categories',
-      //     key: 'name'
-      //   }
-      // },
-      // country: {
-      //   type: Sequelize.STRING,
-      //   references: {
-      //     model: 'Countries',
-      //     key: 'name'
-      //   }
-      // },
+      category: {
+        type: Sequelize.INTEGER,
+        // references: {
+        //   model: 'Categories',
+        //   key: 'name'
+        // }
+      },
+      country: {
+        type: Sequelize.INTEGER,
+        // references: {
+        //   model: 'Countries',
+        //   key: 'name'
+        // }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -56,6 +56,36 @@ module.exports = {
         type: Sequelize.DATE
       }
     })
+    .then(() => queryInterface.addConstraint('News', ['sourceId'], {
+      type: 'foreign key',
+      name: 'fk_source_news',
+      references: { //Required field
+        table: 'sources',
+        field: 'id'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+    }))
+    .then(() => queryInterface.addConstraint('News', ['category'], {
+      type: 'foreign key',
+      name: 'fk_cats_news',
+      references: { //Required field
+        table: 'categories',
+        field: 'id'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+    }))
+    .then(() => queryInterface.addConstraint('News', ['country'], {
+      type: 'foreign key',
+      name: 'fk_countries_news',
+      references: { //Required field
+        table: 'countries',
+        field: 'id'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+    }))
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('News');

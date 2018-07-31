@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Languages.associate = function(models) {
     // associations can be defined here
+    Languages.hasMany(models.Sources);
   };
   return Languages;
 };
