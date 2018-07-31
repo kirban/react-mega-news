@@ -50,8 +50,6 @@ module.exports = {
     }));
   },
   down: (queryInterface, Sequelize) => {
-    return (queryInterface.removeConstraint('sources', 'fk_lang_source')
-    .then(queryInterface.removeConstraint('sources', 'fk_source_news'))
-    .then(queryInterface.dropTable('sources')));
+    return queryInterface.dropTable('sources');
   }
 };

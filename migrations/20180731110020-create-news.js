@@ -27,25 +27,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       sourceId: {
-        type: Sequelize.INTEGER,
-        // references: {
-        //   model: 'Sources',
-        //   key: 'id'
-        // },
+        type: Sequelize.INTEGER
       },
       category: {
-        type: Sequelize.INTEGER,
-        // references: {
-        //   model: 'Categories',
-        //   key: 'name'
-        // }
+        type: Sequelize.INTEGER
       },
       country: {
-        type: Sequelize.INTEGER,
-        // references: {
-        //   model: 'Countries',
-        //   key: 'name'
-        // }
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -88,6 +76,6 @@ module.exports = {
     }))
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('News');
+    return queryInterface.dropTable('news');
   }
 };
