@@ -27,10 +27,10 @@ app.post("/", (req,res)=>{
   })
 })
 
-dbConfig.sync()
+dbConfig.sync( { force: true } )
   .then(() => {
     app.listen(port);
-    console.log(`Server started on ${port}`);
+    console.log(`Server started on port: ${port}`);
   })
   .catch(err => {
     console.error('Server error: ', err);

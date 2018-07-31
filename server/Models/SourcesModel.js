@@ -47,6 +47,6 @@ module.exports =  Source = dbConfig.define('source', {
     Source.hasMany(Language);
     Source.hasMany(News);
 
-Source.sync({force: true}).then(()=>{
-    console.log('Sources up to date');
-})
+// Source.sync({force: true}).then(()=>{
+//     console.log('Sources up to date');
+// })

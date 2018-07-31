@@ -27,7 +27,7 @@ module.exports = News = dbConfig.define('news', {
   });
   
 
-News.sync({force: true}).then(()=>{
-    console.log('News up to date');
-})
+// News.sync({force: true}).then(()=>{
+//     console.log('News up to date');
+// })
 

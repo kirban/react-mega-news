@@ -9,14 +9,14 @@ module.exports =  Category = dbConfig.define('category', {
 
 
 // force: true will drop the table if it already exists
-Category.sync({force: true}).then(() => {
-  // Table created
-  Category.create({ name: 'business' });
-  Category.create({ name: 'entertainment' });
-  Category.create({ name: 'general' });
-  Category.create({ name: 'health' });
-  Category.create({ name: 'science' });
-  Category.create({ name: 'sports' });
-  Category.create({ name: 'technology' });
-});
+// Category.sync({force: true}).then(() => {
+//   // Table created
+//   Category.create({ name: 'business' });
+//   Category.create({ name: 'entertainment' });
+//   Category.create({ name: 'general' });
+//   Category.create({ name: 'health' });
+//   Category.create({ name: 'science' });
+//   Category.create({ name: 'sports' });
+//   Category.create({ name: 'technology' });
+// });
 
