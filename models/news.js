@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   News.associate = function(models) {
     // associations can be defined here
-    News.belongsTo(models.Sources, {targetKey: 'sourceId', constraints: false});
+    News.belongsTo(models.Sources);
+    //News.belongsTo(models.Categories);
   };
   return News;
 };

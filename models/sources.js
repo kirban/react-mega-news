@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Sources = sequelize.define('Sources', {
-    sourceId: DataTypes.STRING,
+    sourceId: DataTypes.UUID,
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     url: DataTypes.STRING,
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Sources.associate = function(models) {
     // associations can be defined here
-    Sources.hasMany(models.News, {sourceKey: 'sourceId', constraints: false});
+    Sources.hasMany(models.News);
   };
   return Sources;
 };
