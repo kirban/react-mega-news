@@ -44,7 +44,7 @@ module.exports = {
         type: Sequelize.DATE
       }
     })
-    .then(() => queryInterface.addConstraint('News', ['sourceId'], {
+    .then(() => queryInterface.addConstraint('News', ['source_id'], {
       type: 'foreign key',
       name: 'fk_source_news',
       references: { //Required field

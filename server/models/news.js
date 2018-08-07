@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     urlToImage: DataTypes.STRING,
     publishedAt: DataTypes.STRING,
     author: DataTypes.STRING,
-    sourceId: DataTypes.UUID
+    source_id: DataTypes.UUID
   }, {});
   News.associate = function(models) {
     // associations can be defined here
