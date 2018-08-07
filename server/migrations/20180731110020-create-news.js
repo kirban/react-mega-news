@@ -26,7 +26,7 @@ module.exports = {
       author: {
         type: Sequelize.STRING
       },
-      sourceId: {
+      source_id: {
         type: Sequelize.INTEGER
       },
       category: {
