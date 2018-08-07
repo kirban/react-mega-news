@@ -5,7 +5,7 @@ const reducer = (state = [], action) => {
     switch(action.type) {
       case 'REFRESH_NEWS':
         if(action.payload.currentPage === 'sources') {
-          getSources({});
+          getSources();
         } else {
           updateNews(action.payload.currentPage, {country: 'us'});
         }

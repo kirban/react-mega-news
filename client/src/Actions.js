@@ -27,7 +27,7 @@ export default function updateNews (endPoint, params){  // endPoint could be: 't
 
 }
 
-export function getSources (params) {
+export function getSources (params = {}) {
     axios.get(withQuery(mainUrl + 'sources', params))
     .then(response => {
         if (response.status === 200) {

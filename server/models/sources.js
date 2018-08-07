@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     country: DataTypes.STRING
   }, {});
   Sources.associate = function(models) {
-    // associations can be defined here
+    // associations can be defined here    
     Sources.hasMany(models.News);
-    Sources.belongsTo(model.languages);
+    Sources.belongsTo(models.Languages);
   };
   return Sources;
 };
