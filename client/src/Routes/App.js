@@ -9,9 +9,9 @@ import { store } from '../index';
 
 export default class App extends Component { 
 
-  static getDerivedStateFromProps(){
-    return store.dispatch({ type: 'REFRESH_NEWS', payload: { currentPage: 'top-headlines' } });
-  }
+  // static getDerivedStateFromProps(){
+    // return store.dispatch({ type: 'REFRESH_NEWS', payload: { currentPage: 'top-headlines' } });
+  // }
   state = {  }
   render() {
     return (

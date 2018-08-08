@@ -5,16 +5,15 @@ const config = require('./config/config.json');
 const db = require('./models/index').sequelize;
 const app = express();
 const port = process.env.PORT || config.port;
+const renderNews = require('./services').renderNews;
+const search = require('./services').search;
 
-
-console.log(`Db: ${Object.keys(db)}`);
 app.post("/", (req,res)=>{
   res.send({
     message: `Hello ${req.body}!`
   })
 })
 
-//console.log(`Here's bd: ${Object.keys(db.Sequelize)} `);
 db.sync({ })
   .then(()=>{
     console.log(`Yeah`);
@@ -25,4 +24,5 @@ db.sync({ })
     console.error(`Something is wrong with your database! Check this: ${err}`);
   })
 
-
+app.use('/', renderNews);
+app.use('/search', search);

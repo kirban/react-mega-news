@@ -7,7 +7,8 @@ class CNewsList extends Component {
   render() {
     return (
       <ul className="news__list">
-      {this.props.news.map((n, i)=>{
+      {
+        this.props.news.map((n, i)=>{
           return (
             <li className="news__item" key={i}>
               
@@ -32,8 +33,8 @@ class CNewsList extends Component {
 
 }
 
-export default connect(state => {
-  return {
-    news: state
-  }
-})(CNewsList)
+const mapStateToProps = state => ({
+  news: state.NewsRedcuer.news,
+});
+
+export default connect(mapStateToProps)(CNewsList);

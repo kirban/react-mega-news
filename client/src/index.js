@@ -4,14 +4,14 @@ import './index.css';
 import App from './Routes/App';
 import Sources from './Routes/Sources';
 import registerServiceWorker from './registerServiceWorker';
-import reducer from './Reducers/Reducer';
+import rootReducer from './Reducers/index';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux';
 import { Route, HashRouter } from 'react-router-dom';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-export const store = createStore(reducer, composeWithDevTools(applyMiddleware(ReduxThunk)) )
+export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk)) )
 
 
 ReactDOM.render(<Provider store={store}>
