@@ -1,5 +1,5 @@
 // import { store } from './index';
-import axios from 'axios';
+//import axios from 'axios';
 
 // let apiKey = '330aba15643547cfa7212c01fb7f664f';
 // let mainUrl = 'https://newsapi.org/v2/';
@@ -43,20 +43,23 @@ import axios from 'axios';
 // export function searchNews(){}
 
 import { newsActions } from './Reducers/NewsReducer';
-import { sourcesActions } from './Reducers/SourcesReducer';
+//import { sourcesActions } from './Reducers/SourcesReducer';
 import { store } from './index';
 
 export const renderNews = () => async () => {
     store.dispatch(newsActions.render.loading());
 
-    const news = await fetch('/', {
+    const news = await fetch('/top-headlines', {
         method: 'GET',
         headers: {'Content-Type': 'application/json'},
         responseType: 'json'
     })
-    .then(res => console.log('Vernul otvet ot backend: ', res))
-    //store.dispatch(newsActions.render.success(news)); return 
-    // .catch(err => store.dispatch(newsActions.render.error(err)));
+    .then ( res => res.json() )
+    .then ( res => res)
+    .catch(err => store.dispatch(newsActions.render.error(err)));
+    
+    store.dispatch(newsActions.render.success(news));
+
 }
 
 export const searchNews = q => async (dispatch) => {
@@ -68,6 +71,9 @@ export const searchNews = q => async (dispatch) => {
         body: q,
         responseType: 'json'
     })
-    .then(res => { dispatch(newsActions.search.success(news)); return res.json(); })
+    .then(res => res.json())
+    .then(res => res)
     .catch(err => dispatch(newsActions.search.error(err)));
+    
+    dispatch(newsActions.search.success(news))
 };

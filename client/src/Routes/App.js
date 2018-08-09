@@ -4,7 +4,7 @@ import CNewsList from '../components/NewsList';
 import CHeader from '../components/Header';
 import CFilters from '../components/Filters';
 import '../App.css';
-import { store } from '../index';
+//import { store } from '../index';
 
 
 export default class App extends Component { 

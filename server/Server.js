@@ -8,11 +8,15 @@ const port = process.env.PORT || config.port;
 const renderNews = require('./services').renderNews;
 const search = require('./services').search;
 
-app.post("/", (req,res)=>{
+app.get("/", (req,res)=>{
   res.send({
     message: `Hello ${req.body}!`
   })
 })
+
+app.get('/top-headlines', renderNews);
+
+app.post('/search', search);
 
 db.sync({ })
   .then(()=>{
@@ -24,5 +28,5 @@ db.sync({ })
     console.error(`Something is wrong with your database! Check this: ${err}`);
   })
 
-app.use('/', renderNews);
-app.use('/search', search);
+
+

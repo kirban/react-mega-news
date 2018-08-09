@@ -1,4 +1,4 @@
-import updateNews, { getSources } from '../Actions';
+//import updateNews, { getSources } from '../Actions';
 import { combineReducers } from 'redux';
 import NewsRedcuer from './NewsReducer';
 import SourcesReducer from './SourcesReducer';
