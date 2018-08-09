@@ -1,12 +1,18 @@
   //connecting to mysql sT16ui24st16ui24 - nodeadmin
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const config = require('./config/config.json');
 const db = require('./models/index').sequelize;
 const app = express();
 const port = process.env.PORT || config.port;
 const renderNews = require('./services').renderNews;
-const search = require('./services').search;
+const searchNews = require('./services').searchNews;
+const renderSources = require('./services').renderSources;
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req,res)=>{
   res.send({
@@ -16,7 +22,9 @@ app.get("/", (req,res)=>{
 
 app.get('/top-headlines', renderNews);
 
-app.post('/search', search);
+app.get('/sources', renderSources);
+
+app.post('/search', searchNews);
 
 db.sync({ })
   .then(()=>{

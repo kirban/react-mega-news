@@ -31,7 +31,7 @@ class CNewsList extends Component {
         </ul>
       )
     }
-    else if( this.props.news.hasOwnProperty('error') && this.props.news.error && this.props.news.hasOwnProperty('payload') ) {
+    else {
       return (
           <span>{this.props.news.payload.stack}</span>
       )

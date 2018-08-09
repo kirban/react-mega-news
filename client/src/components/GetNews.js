@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { store } from '../index';
 import { connect } from 'react-redux';
-import { renderNews } from '../Actions';
+import { renderNews, renderSources } from '../Actions';
 
 export class CGetNews extends Component {
 
@@ -15,7 +15,14 @@ export class CGetNews extends Component {
             console.log("store changed", store.getState()); // TODO:здесь надо что-то сделать ...
         })
         return (
-            <button onClick={() => this.props.renderNews()} className="refresh">
+            <button onClick={() => {
+                if(this.props.currentPage==='top-headlines'){
+                    this.props.renderNews()
+                }
+                else if (this.props.currentPage==='sources'){
+                    this.props.renderSources()
+                }
+            }} className="refresh">
                 <i className="fas fa-sync"></i>                
             </button>
         );
@@ -27,7 +34,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-    renderNews
+    renderNews,
+    renderSources
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CGetNews);

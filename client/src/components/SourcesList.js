@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 class CSourcesList extends Component {
     state = {  }
     render() { 
-        return <ul className="sources__list">
+        if(Array.isArray(this.props.sources)){
+            return <ul className="sources__list">
             { this.props.sources.map((source, i)=>{
                 return (
                     <li className="sources__item" key={i}>
@@ -20,11 +21,13 @@ class CSourcesList extends Component {
             }) 
             }
         </ul>;
+        }
+        
     }
 }
  
-export default connect(state => {
-    return {
-      sources: state
-    }
-  })(CSourcesList)
+const mapStateToProps = state => ({
+    sources: state.SourcesReducer.sources,
+  });
+  
+  export default connect(mapStateToProps)(CSourcesList);

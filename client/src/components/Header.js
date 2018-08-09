@@ -23,7 +23,7 @@ export default class CHeader extends Component {
                 <LinkContainer to="/sources">
                     <NavItem className="header__nav-item">Sources</NavItem>
                 </LinkContainer>             
-
+{console.log('current: ',this.props.currentPage)}
                 <CGetNews currentPage={this.props.currentPage}/>    
             </Nav>
             <CNewsSearch currentPage={this.props.currentPage}/>

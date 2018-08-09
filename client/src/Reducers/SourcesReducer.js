@@ -23,7 +23,7 @@ const SourcesReducer = handleActions({
         return Object.assign({}, state, {sources, err: null});
     },
     [actions.render.error](state, {payload: {err}}) {
-        return {...state, sources: [], err: err};
+        return {...state, sources: [], err: err};               
     }
 }, initialState)
 
