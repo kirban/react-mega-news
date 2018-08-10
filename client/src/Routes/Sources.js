@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { store } from '../index';
 import CHeader from '../components/Header';
 import CSourcesList from '../components/SourcesList';
 
