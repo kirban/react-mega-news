@@ -4,12 +4,10 @@ module.exports = {
     return queryInterface.createTable('Sources', {
       id: {
         allowNull: false,
-        autoIncrement: true,
+        autoIncrement: false,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      sourceId: {
-        type: Sequelize.STRING,      
+        unique: true,
+        type: Sequelize.STRING,
       },
       name: {
         type: Sequelize.STRING
@@ -24,7 +22,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       language: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       country: {
         type: Sequelize.STRING
@@ -43,7 +41,27 @@ module.exports = {
       name: 'fk_lang_source',
       references: { //Required field
         table: 'languages',
-        field: 'id'
+        field: 'name'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+    }))
+    .then(() => queryInterface.addConstraint('Sources', ['category'], {
+      type: 'foreign key',
+      name: 'fk_cat_source',
+      references: { //Required field
+        table: 'categories',
+        field: 'name'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+    }))
+    .then(() => queryInterface.addConstraint('Sources', ['country'], {
+      type: 'foreign key',
+      name: 'fk_country_source',
+      references: { //Required field
+        table: 'countries',
+        field: 'name'
       },
       onDelete: 'cascade',
       onUpdate: 'cascade'

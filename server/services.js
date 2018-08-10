@@ -40,6 +40,14 @@ function renderSources (req, res) {
         .catch(e => { res.send({ error: true, payload: e }) }) //TODO: вывод ошибок
 }
 
+function insertNews (data) {
+    return
+}
+
+function insertSources(data) {
+    return
+}
+
 exports.renderNews = renderNews;
 exports.searchNews = searchNews;
 exports.renderSources = renderSources;

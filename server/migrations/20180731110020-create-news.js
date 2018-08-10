@@ -26,14 +26,8 @@ module.exports = {
       author: {
         type: Sequelize.STRING
       },
-      source_id: {
-        type: Sequelize.INTEGER
-      },
-      category: {
-        type: Sequelize.INTEGER
-      },
-      country: {
-        type: Sequelize.INTEGER
+      source: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -44,31 +38,11 @@ module.exports = {
         type: Sequelize.DATE
       }
     })
-    .then(() => queryInterface.addConstraint('News', ['source_id'], {
+    .then(() => queryInterface.addConstraint('News', ['source'], {
       type: 'foreign key',
       name: 'fk_source_news',
       references: { //Required field
         table: 'sources',
-        field: 'id'
-      },
-      onDelete: 'cascade',
-      onUpdate: 'cascade'
-    }))
-    .then(() => queryInterface.addConstraint('News', ['category'], {
-      type: 'foreign key',
-      name: 'fk_cats_news',
-      references: { //Required field
-        table: 'categories',
-        field: 'id'
-      },
-      onDelete: 'cascade',
-      onUpdate: 'cascade'
-    }))
-    .then(() => queryInterface.addConstraint('News', ['country'], {
-      type: 'foreign key',
-      name: 'fk_countries_news',
-      references: { //Required field
-        table: 'countries',
         field: 'id'
       },
       onDelete: 'cascade',
