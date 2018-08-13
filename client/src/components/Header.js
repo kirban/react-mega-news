@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar,Nav,NavItem } from 'react-bootstrap';
-import CNewsSearch from '../components/Search';
-import CGetNews from '../components/GetNews';
+import CNewsSearch from './Search';
+import CRefresh from './Refresh';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -24,7 +24,7 @@ export default class CHeader extends Component {
                     <NavItem className="header__nav-item">Sources</NavItem>
                 </LinkContainer>             
 {console.log('current: ',this.props.currentPage)}
-                <CGetNews currentPage={this.props.currentPage}/>    
+                <CRefresh currentPage={this.props.currentPage}/>    
             </Nav>
             <CNewsSearch currentPage={this.props.currentPage}/>
         </Navbar.Collapse>

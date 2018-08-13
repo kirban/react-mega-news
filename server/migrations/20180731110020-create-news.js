@@ -9,10 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       url: {
         type: Sequelize.STRING
@@ -30,13 +31,16 @@ module.exports = {
         type: Sequelize.STRING
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('NOW()')
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('NOW()')
       }
+      
+    },{
+      timestamps: true
     })
     .then(() => queryInterface.addConstraint('News', ['source'], {
       type: 'foreign key',

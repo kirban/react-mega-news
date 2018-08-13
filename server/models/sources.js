@@ -6,8 +6,18 @@ module.exports = (sequelize, DataTypes) => {
     url: DataTypes.STRING,
     category: DataTypes.STRING,
     language: DataTypes.STRING,
-    country: DataTypes.STRING
-  }, {});
+    country: DataTypes.STRING,
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    }
+  }, {
+    timestamps: true
+  });
   Sources.associate = function(models) {
     // associations can be defined here    
     Sources.belongsTo(models.Languages);

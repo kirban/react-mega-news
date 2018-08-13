@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import { store } from '../index';
+import { store } from '..';
 import { connect } from 'react-redux';
 import { renderNews, renderSources } from '../Actions';
 
-export class CGetNews extends Component {
+export class CRefresh extends Component {
 
     constructor(props){
         super(props);
         this.state = { displayedNews: this.props.news};
+    }
+
+    static getDerivedStateFromProps(){
+        renderSources();
     }
 
     render(){
@@ -38,4 +42,4 @@ const mapDispatchToProps = {
     renderSources
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CGetNews);
+export default connect(mapStateToProps, mapDispatchToProps)(CRefresh);

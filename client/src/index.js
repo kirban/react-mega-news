@@ -4,7 +4,7 @@ import './index.css';
 import App from './Routes/App';
 import Sources from './Routes/Sources';
 import registerServiceWorker from './registerServiceWorker';
-import rootReducer from './Reducers/index';
+import rootReducer from './Reducers';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux';
