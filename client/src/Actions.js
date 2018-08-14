@@ -104,17 +104,18 @@ export const getLanguages = async () => {
 
 export const getCountries = async () => {
     try {
-        const countries = await fetch('/filters', {
+        const categories = await fetch('/filters', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify('country'),
             responseType: 'json'
          })
          .then( res => res.json())
+         .then ( data => console.log(data))
          .catch(err => {
              throw new err();
          });
-         return countries;
+         return categories;
     } catch (error) {
         console.error('Error getting countries');
     }

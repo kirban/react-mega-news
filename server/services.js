@@ -91,7 +91,7 @@ function insertOrUpdateSources(data) {
 }
 
 function getFilters(req, res){
-    let filterName = req.body.filter;  // { }
+    let filterName = req.body.filter;
     
     switch (filterName){
         case 'country':

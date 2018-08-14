@@ -37,7 +37,11 @@ class CFilters extends Component {
                     <ControlLabel>Category: </ControlLabel>{' '}
                     <FormControl componentClass="select" placeholder="category">
                     {
-                        
+                        // categories.then( arr => {
+                        //     arr.forEach((element,i) => {
+                        //         return (<option key={i}>{element.name}</option>)
+                        //     });
+                        // })
                     }
                     </FormControl>
                 </FormGroup>
