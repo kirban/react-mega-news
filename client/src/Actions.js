@@ -2,26 +2,27 @@ import { newsActions } from './Reducers/NewsReducer';
 import { sourcesActions } from './Reducers/SourcesReducer';
 import { store } from '.';
 
-export const renderNews = () => async () => {
-    store.dispatch(newsActions.render.loading());
-    
+export const renderNews = (params) => async (dispatch) => {
+    dispatch(newsActions.render.loading());
     try {
+        let rBody = (params === undefined) ? { country: 'us' } : params;
         const news = await fetch('/top-headlines', {
-            method: 'GET',
+            method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            responseType: 'json'
+            responseType: 'json',
+            body: JSON.stringify(rBody),
         })
         .then( res => {
             if (res.hasOwnProperty('error') && res.error){
-                store.dispatch(newsActions.render.error(res.payload))
+                dispatch(newsActions.render.error(res.payload))
             }
             else {
                 return res.json()
             }
         });
-        store.dispatch(newsActions.render.success(news));
+        dispatch(newsActions.render.success(news));
     } catch (err) {
-        store.dispatch(newsActions.render.error(err))       //TODO: вывод ошибок
+        dispatch(newsActions.render.error(err))       //TODO: вывод ошибок
     };
 }
 
@@ -64,3 +65,57 @@ export const searchNews = q => async (dispatch) => {
     }
     
 };
+
+export const getCategories = async (dispatch) => {
+    try {
+         const categories = await fetch('/filters', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({filter: 'category'}),
+            responseType: 'json'
+         })
+         .then( res => res.json())
+         .catch(err => {
+             throw new err();
+         });
+         return categories;
+    } catch (error) {
+        console.error('Error getting cats');
+    }
+}
+
+export const getLanguages = async () => {
+    try {
+         const languages = await fetch('/filters', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify('language'),
+            responseType: 'json'
+         })
+         .then( res => res.json())
+         .catch(err => {
+             throw new err();
+         });
+         return languages;
+    } catch (error) {
+        console.error('Error getting langs');
+    }
+}
+
+export const getCountries = async () => {
+    try {
+        const countries = await fetch('/filters', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify('country'),
+            responseType: 'json'
+         })
+         .then( res => res.json())
+         .catch(err => {
+             throw new err();
+         });
+         return countries;
+    } catch (error) {
+        console.error('Error getting countries');
+    }
+}

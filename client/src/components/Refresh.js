@@ -10,8 +10,8 @@ export class CRefresh extends Component {
         this.state = { displayedNews: this.props.news};
     }
 
-    static getDerivedStateFromProps(){
-        renderSources();
+    static getDerivedStateFromProps(props){
+        return props.renderSources();
     }
 
     render(){
@@ -21,7 +21,7 @@ export class CRefresh extends Component {
         return (
             <button onClick={() => {
                 if(this.props.currentPage==='top-headlines'){
-                    this.props.renderNews()
+                    this.props.renderNews()                     // <- type params here, by default: { country: 'us' }
                 }
                 else if (this.props.currentPage==='sources'){
                     this.props.renderSources()

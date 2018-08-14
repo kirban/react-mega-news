@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { getCategories, getLanguages, getCountries } from '../Actions';
 class CFilters extends Component {
+    constructor(params) {
+        super(params);
+        this.state = { }
+    }
+
+    static getDerivedStateFromProps(props){
+        return null
+    }
+    // SOOOMETHING_THAT_IS_ARRAY.map((element, i) => {
+    //     return (<option key={i}>{element.name}</option>)                            
+    // })
     render() {
+        let categories = getCategories();
+        console.warn(categories);
+
         return (
             <Form className="filters__form" inline>
                 <FormGroup className="filters__form-group" controlId="formInlineCountry">
@@ -21,8 +36,9 @@ class CFilters extends Component {
                 <FormGroup className="filters__form-group" controlId="formInlineCategory">
                     <ControlLabel>Category: </ControlLabel>{' '}
                     <FormControl componentClass="select" placeholder="category">
-                        <option value="cat1">Category 1</option>
-                        <option value="cat2">Category 2</option>
+                    {
+                        
+                    }
                     </FormControl>
                 </FormGroup>
             </Form>

@@ -37,7 +37,7 @@ const NewsReducer = handleActions({
         return Object.assign({}, state, {news, err: null});
     },
     [actions.render.error](state, {payload: {err}}) {
-        console.warn(err);
+        // console.warn(err);
         return {...state, news: [], err: err};              //TODO: вывод ошибок
     }
 }, initialState)

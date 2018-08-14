@@ -7,6 +7,7 @@ const port = process.env.PORT || config.port;
 const renderNews = require('./services').renderNews;
 const searchNews = require('./services').searchNews;
 const renderSources = require('./services').renderSources;
+const getFilters = require('./services').getFilters;
 
 
 app.use(bodyParser.json());
@@ -18,11 +19,13 @@ app.get("/", (req,res)=>{
   })
 })
 
-app.get('/top-headlines', renderNews);
+app.post('/top-headlines', renderNews);
 
 app.get('/sources', renderSources);
 
 app.post('/search', searchNews);
+
+app.post('/filters', getFilters);
 
 db.sync({ })
   .then(()=>{

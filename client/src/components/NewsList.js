@@ -33,7 +33,9 @@ class CNewsList extends Component {
     }
     else {
       return (
-          <span>{this.props.news.payload.stack}</span>
+          // <span>{this.props.news.payload.stack}</span>
+          <div>{console.log(this.props.news)}</div>
+          
       )
     }
     
