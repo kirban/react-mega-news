@@ -15,9 +15,9 @@ class CFilters extends Component {
     // })
     render() {
         let categories = getCategories();
-        console.warn(categories);
-
+        console.log(categories);
         return (
+            
             <Form className="filters__form" inline>
                 <FormGroup className="filters__form-group" controlId="formInlineCountry">
                     <ControlLabel>Country: </ControlLabel>{' '}
@@ -42,6 +42,8 @@ class CFilters extends Component {
                         //         return (<option key={i}>{element.name}</option>)
                         //     });
                         // })
+                        
+                        // console.error(getCategories.apply(this,arguments))
                     }
                     </FormControl>
                 </FormGroup>

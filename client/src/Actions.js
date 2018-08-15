@@ -78,6 +78,7 @@ export const getCategories = async (dispatch) => {
          .catch(err => {
              throw new err();
          });
+         console.warn('cats: ',categories);
          return categories;
     } catch (error) {
         console.error('Error getting cats');

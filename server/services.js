@@ -95,29 +95,26 @@ function getFilters(req, res){
     
     switch (filterName){
         case 'country':
-            countriesModel.findAll({attributes: ['name'], paranoid: true})
+            countriesModel.findAll({attributes: ['name'], paranoid: true, raw: true})
             .then(response => {
-                console.log('\n\n\nresponse:',response,'\n\n\n');
                 res.send(response);
-                return;
             });
             break;
         case 'language':
-            languagesModel.findAll({attributes: ['name'], paranoid: true})
+            languagesModel.findAll({attributes: ['name'], paranoid: true, raw: true})
             .then(response => {
                 res.send(response);
-                return;
             });
             break;
         case 'category':
-            categoriesModel.findAll({attributes: ['name'], paranoid: true})
+            categoriesModel.findAll({attributes: ['name'], paranoid: true, raw: true})
             .then(response => {
+                console.log('\n\nresponse:', response , '\n\n');
                 res.send(response);
-                return;
             });
             break;
         default:
-            return;
+            break
     }
 
 
