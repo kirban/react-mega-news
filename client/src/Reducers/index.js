@@ -2,8 +2,9 @@
 import { combineReducers } from 'redux';
 import NewsRedcuer from './NewsReducer';
 import SourcesReducer from './SourcesReducer';
+import FiltersReducer from './FiltersReducer';
 
-const rootReducer = combineReducers({ NewsRedcuer, SourcesReducer });
+const rootReducer = combineReducers({ NewsRedcuer, SourcesReducer, FiltersReducer });
 
 // const reducer = (state = [], action) => {
 //     console.log(action);

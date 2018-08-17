@@ -4,9 +4,6 @@ import CSourcesList from '../components/SourcesList';
 
 class Sources extends Component {
     state = { };
-    // static getDerivedStateFromProps(){
-    //     // return store.dispatch({ type: 'REFRESH_NEWS', payload: { currentPage: 'sources' } });
-    // }
     render() { 
         return (            
             <div className="wrapper">

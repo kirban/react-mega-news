@@ -1,7 +1,7 @@
 {
     "development": {
-        "username": "root",
-        "password": "romanich95",
+        "username": "nodeadmin",
+        "password": "sT16ui24st16ui24",
         "database": "reactmeganews",
         "host": "127.0.0.1",
         "dialect": "mysql"

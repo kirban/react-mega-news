@@ -109,7 +109,6 @@ function getFilters(req, res){
         case 'category':
             categoriesModel.findAll({attributes: ['name'], paranoid: true, raw: true})
             .then(response => {
-                console.log('\n\nresponse:', response , '\n\n');
                 res.send(response);
             });
             break;

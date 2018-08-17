@@ -24,7 +24,7 @@ export default class CHeader extends Component {
                     <NavItem className="header__nav-item">Sources</NavItem>
                 </LinkContainer>             
 {console.log('current: ',this.props.currentPage)}
-                <CRefresh currentPage={this.props.currentPage}/>    
+                <CRefresh currentPage={this.props.currentPage} category={this.props.category}/>    
             </Nav>
             <CNewsSearch currentPage={this.props.currentPage}/>
         </Navbar.Collapse>

@@ -5,6 +5,7 @@ import { store } from '.';
 export const renderNews = (params) => async (dispatch) => {
     dispatch(newsActions.render.loading());
     try {
+        console.warn('\n\n\n',params ,'\n\n\n');
         let rBody = (params === undefined) ? { country: 'us' } : params;
         const news = await fetch('/top-headlines', {
             method: 'POST',
@@ -78,7 +79,6 @@ export const getCategories = async (dispatch) => {
          .catch(err => {
              throw new err();
          });
-         console.warn('cats: ',categories);
          return categories;
     } catch (error) {
         console.error('Error getting cats');
@@ -90,7 +90,7 @@ export const getLanguages = async () => {
          const languages = await fetch('/filters', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify('language'),
+            body: JSON.stringify({filter: 'language'}),
             responseType: 'json'
          })
          .then( res => res.json())
@@ -108,11 +108,10 @@ export const getCountries = async () => {
         const categories = await fetch('/filters', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify('country'),
+            body: JSON.stringify({filter: 'country'}),
             responseType: 'json'
          })
          .then( res => res.json())
-         .then ( data => console.log(data))
          .catch(err => {
              throw new err();
          });
