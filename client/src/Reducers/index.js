@@ -1,14 +1,14 @@
-//import updateNews, { getSources } from '../Actions';
-import { combineReducers } from 'redux'
-import NewsReducer from './NewsReducer'
-import SourcesReducer from './SourcesReducer'
-import FiltersReducer from './FiltersReducer'
+// import updateNews, { getSources } from '../Actions';
+import { combineReducers } from 'redux';
+import NewsReducer from './NewsReducer';
+import SourcesReducer from './SourcesReducer';
+import FiltersReducer from './FiltersReducer';
 
 const rootReducer = combineReducers({
 	NewsReducer,
 	SourcesReducer,
 	FiltersReducer,
-})
+});
 
 // const reducer = (state = [], action) => {
 //     console.log(action);
@@ -35,4 +35,4 @@ const rootReducer = combineReducers({
 
 //   }
 
-export default rootReducer
+export default rootReducer;

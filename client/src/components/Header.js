@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import { Navbar, Nav, NavItem } from 'react-bootstrap'
-import CNewsSearch from './Search'
-import CRefresh from './Refresh'
-import { Link } from 'react-router-dom'
-import { LinkContainer } from 'react-router-bootstrap'
+import React, { Component } from 'react';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
+import CNewsSearch from './Search';
 
 export default class CHeader extends Component {
 	render() {
@@ -24,15 +23,10 @@ export default class CHeader extends Component {
 						<LinkContainer exact to="/sources">
 							<NavItem className="header__nav-item">Sources</NavItem>
 						</LinkContainer>
-						{console.log('current: ', this.props.currentPage)}
-						<CRefresh
-							currentPage={this.props.currentPage}
-							category={this.props.category}
-						/>
 					</Nav>
-					<CNewsSearch currentPage={this.props.currentPage} />
+					<CNewsSearch />
 				</Navbar.Collapse>
 			</Navbar>
-		)
+		);
 	}
 }
